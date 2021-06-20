@@ -1,4 +1,4 @@
-
+'use strict'
 //coding challenge 1
 
 const calcAverage = (data1, data2, data3) => (data1 + data2 + data3) / 3;
