@@ -32,7 +32,7 @@ document.querySelector('.check').addEventListener("click", function () {
     // when there is no input
 
     if (!inputData) {
-        document.querySelector('.message').textContent = 'No Number inserted☹️'
+        displayMessage('No Number inserted☹️');
 
 
     }
@@ -42,7 +42,7 @@ document.querySelector('.check').addEventListener("click", function () {
         if (inputData == randomNum) {
             document.body.style.background = "#60b347";
             document.querySelector('.number').style.width = '30rem'
-            document.querySelector('.message').textContent = 'Correct Answer🙌';
+            displayMessage('Correct Answer🙌');
             document.querySelector('.number').textContent = randomNum;
             if (score > highScore) {
                 highScore = score;
@@ -94,7 +94,7 @@ document.querySelector('.check').addEventListener("click", function () {
             }
             else {
                 document.querySelector('.score').textContent = 0;
-                document.querySelector('.message').textContent = '🧨Game Over!🧨';
+                displayMessage('🧨Game Over!🧨');
             }
 
 
@@ -119,7 +119,7 @@ document.querySelector('.again').addEventListener('click', function () {
     console.log(highScore);
     // restore game value and data
     randomNum = Math.floor(Math.random() * 20) + 1;
-    document.querySelector('.message').textContent = "Start guessing..."
+    displayMessage("Start guessing...");
     document.querySelector('.score').textContent = score;
     document.querySelector('.number').textContent = '?';
     document.querySelector('.guess').value = '';
