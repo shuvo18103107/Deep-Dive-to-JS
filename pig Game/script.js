@@ -41,7 +41,25 @@ const switchPlayer = function () {
     player1.classList.toggle('player--active');
 
 }
+const init = function () {
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
+    document.getElementById(`score--${activePlayer}`).style.fontSize = '8rem';
+    document.getElementById(`score--${activePlayer}`).style.color = '#c7365f';
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+    curScore0.textContent = 0;
+    curScore1.textContent = 0;
+    score = 0;
+    activePlayer = 0;
+    playing = true;
+    finalScores[0] = 0;
+    finalScores[1] = 0;
 
+
+    document.querySelector(`.player--${activePlayer}`).classList.add('player--active')
+    console.log(activePlayer);
+
+}
 // rolling dice functionality
 
 rollBtn.addEventListener('click', function () {
@@ -99,6 +117,7 @@ holdBtn.addEventListener('click', function () {
             document.getElementById(`score--${activePlayer}`).style.color = '#03ffd5d6';
             document.getElementById(`score--${activePlayer}`).textContent = 'Winner 🏆';
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
+            document.getElementById(`current--${activePlayer}`).textContent = finalScores[activePlayer];
 
         }
         else {
@@ -109,3 +128,5 @@ holdBtn.addEventListener('click', function () {
     }
 
 })
+
+RestartBtn.addEventListener('click', init)
