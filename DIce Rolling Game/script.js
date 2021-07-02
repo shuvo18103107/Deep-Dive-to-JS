@@ -24,6 +24,10 @@ const player1 = document.querySelector('.player--1');
 const curScore0 = document.getElementById('current--0');
 const curScore1 = document.getElementById('current--1');
 const scoreButton = document.getElementById('finalScoreInput')
+const help = document.querySelector('.help')
+const modal = document.querySelector('.modal')
+const overlay = document.querySelector('.overlay')
+const closeBtn = document.querySelector('.close')
 
 let playing, finalScores, score, activePlayer, playingScore;
 
@@ -48,6 +52,7 @@ const init = function () {
     score = 0;
     activePlayer = 0;
     console.log(`after set  active player : ${activePlayer}`);
+    document.getElementById('helpIcon').style.color = '#000000';
 
 
     // document
@@ -114,7 +119,7 @@ rollBtn.addEventListener('click', function () {
         }
     }
 });
-
+// hold button functionality 
 holdBtn.addEventListener('click', function () {
     playingScore = Number(document.getElementById('finalScoreInput').value);
     if (playingScore == 0) {
@@ -139,6 +144,7 @@ holdBtn.addEventListener('click', function () {
             playing = false;
             rollBtn.disabled = true;
             holdBtn.disabled = true;
+            document.getElementById('helpIcon').style.color = '#ffffff';
             diceEl.classList.add('hidden');
             document
                 .querySelector(`.player--${activePlayer}`)
@@ -147,6 +153,7 @@ holdBtn.addEventListener('click', function () {
                 '3.5rem';
             document.getElementById(`score--${activePlayer}`).style.color =
                 '#03ffd5d6';
+            // help.getElementsByTagName('i').style.color = 'white'
             document.getElementById(
                 `score--${activePlayer}`
             ).textContent = `${finalScores[activePlayer]} Winner 🏆`;
@@ -161,7 +168,7 @@ holdBtn.addEventListener('click', function () {
         }
     }
 });
-
+// restart button functionality
 RestartBtn.addEventListener('click', function () {
 
 
@@ -181,6 +188,19 @@ RestartBtn.addEventListener('click', function () {
 
 });
 
-// prb statment 
-// first load hoia hold e click korle winner dekhai r new game disabel
-// first time load e score input dilei roll r hold kaj korbe  
+// help button functionality
+help.addEventListener('click', function () {
+    modal.classList.remove('hide')
+    overlay.classList.remove('hide')
+
+
+})
+closeBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    modal.classList.add('hide')
+    overlay.classList.add('hide')
+
+
+})
+
+
