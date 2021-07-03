@@ -34,8 +34,20 @@ let playing, finalScores, score, activePlayer, playingScore;
 // initial setup when game load first time
 // bug -> player winner class kivabe remove korbo player 2 i mean active player 1 theke
 
+const notification = function () {
+    // Get the snackbar DIV
+    let x = document.getElementById("snackbar");
 
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () {
+        x.className = x.className.replace("show", "");
+    }, 3000);
+}
 const init = function () {
+    notification()
 
     document.getElementById('finalScoreInput').disabled = false;
     rollBtn.disabled = false;
@@ -68,6 +80,7 @@ const init = function () {
     // console.log(activePlayer);
 };
 
+
 init();
 const switchPlayer = function () {
     document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -90,6 +103,7 @@ rollBtn.addEventListener('click', function () {
     playingScore = Number(document.getElementById('finalScoreInput').value);
     if (playingScore == 0) {
         playing = false;
+        notification();
     }
     else {
         playing = true;
@@ -124,6 +138,7 @@ holdBtn.addEventListener('click', function () {
     playingScore = Number(document.getElementById('finalScoreInput').value);
     if (playingScore == 0) {
         playing = false;
+        notification();
     }
     else {
         playing = true;
@@ -170,6 +185,7 @@ holdBtn.addEventListener('click', function () {
 });
 // restart button functionality
 RestartBtn.addEventListener('click', function () {
+
 
 
     console.log('has some plaScore and after fnish the game');
