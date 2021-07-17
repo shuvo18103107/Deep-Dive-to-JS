@@ -76,11 +76,56 @@ function deleteshoppingCart() {
 var x = 1;
 let y = 2;
 const z = 3;
-console.log(x == window.x);
-console.log(y == window.y);
-console.log(z == window.z);
+// console.log(x == window.x);
+// console.log(y == window.y);
+// console.log(z == window.z);
 
 
 // best practice
 // use let rather than var and if use var then ignore hosting , always declare variable first before it call
 // function declaration is hosted but dont use it , at first make function then call it
+
+// this keyword 
+// method e this keyword point kore object ke
+// simple function call e this keyword point kore undefined jodi strict mode e thake
+// arrow function e  this keyword point kore parent function ke jetake lexical this o bole
+// event listner e this keyword point dom element re jetar sathe handler attach thake
+
+// example of this
+// global object e this keyword refer kore window object re
+console.log(this);
+// global function ethis
+const calcAgeold = function (birthtear) {
+    return 2037 - birthtear;
+    // regular function call so this keyword will be undefined but if it is not in strict mode then we show the global object like window
+    console.log(this);
+}
+console.log(calcAgeold(2021));
+// arrow function e this
+const calcAgearrow = (birthtear) =>
+    2037 - birthtear;
+//arrow function e this keyword nijer ta use kore na uporer this ta use kore mane lexical this
+console.log(this);
+
+console.log(calcAgeold(2021));
+
+// this in object, it points the object when it use in any method(object e function call)
+const shuvo = {
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(2037 - this.year);
+    }
+
+}
+
+shuvo.calcAge();
+
+const obj2 = {
+    year: 2021,
+}
+obj2.calcAge = shuvo.calcAge;
+
+obj2.calcAge();
+// ei f ta ekhn regular function call so eta undefined hobe
+const f = shuvo.calcAge;
