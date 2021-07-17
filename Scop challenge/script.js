@@ -38,3 +38,49 @@ function calcAge(birthYear) {
 }
 const firstName = 'shuvo';
 calcAge(1991);
+// hoisting 
+
+
+// console.log(me);
+//it shows undefines
+// console.log(job);
+//it shows cannot accesible before initialized
+// console.log(year);
+var me = 'shuvo';
+let job = ' software enginner';
+const year = '1997';
+// we can access function declaration before the function call
+// console.log(addDec(5, 6));
+// any variable dec;are with var and call it before initialize(hosted) it will be undefined
+// console.log(addExp(3, 4));
+// console.log(addArrow(2, 20));
+function addDec(a, b) {
+    return a + b;
+}
+// we cannot access this expresion and arrow function        before initialize
+var addExp = function (a, b) {
+    return a + b;
+}
+
+const addArrow = (a, b) => a + b;
+
+// example
+if (!numberProducts) deleteshoppingCart();
+var numberProducts = 20;
+deleteshoppingCart();
+function deleteshoppingCart() {
+    console.log('All products deleted');
+}
+// example 2
+//  variable declare in var create  a window object but let and const dont create it
+var x = 1;
+let y = 2;
+const z = 3;
+console.log(x == window.x);
+console.log(y == window.y);
+console.log(z == window.z);
+
+
+// best practice
+// use let rather than var and if use var then ignore hosting , always declare variable first before it call
+// function declaration is hosted but dont use it , at first make function then call it
