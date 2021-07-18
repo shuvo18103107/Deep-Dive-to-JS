@@ -181,3 +181,22 @@ var arrow = (a, b) => {
 }
 arrow(2, 3, 6)
 
+// primitive vs object types
+
+//primitive -> string,number,boolean,undefined,null,symbol,bigInt
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+//object copy kore paltaile somosaa hoi copy value tai permanent set hoi
+const me = {
+    name: 'jonas',
+    age: 30,
+};
+
+const friends = me;
+friends.age = 32;
+console.log('friends', friends);
+console.log('Me', me);
