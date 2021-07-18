@@ -180,3 +180,4 @@ var arrow = (a, b) => {
     console.log(arguments);
 }
 arrow(2, 3, 6)
+
