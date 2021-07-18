@@ -129,3 +129,54 @@ obj2.calcAge = shuvo.calcAge;
 obj2.calcAge();
 // ei f ta ekhn regular function call so eta undefined hobe
 const f = shuvo.calcAge;
+
+// regular function vs arrow function
+let firstName1 = ' matela';
+const mohammad = {
+    firstName: 'Shuvo',
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(2037 - this.year);
+
+        // ekta method er vitor abar function call kore this keyword acees korar solution 1
+        // const self = this;
+        // const isMillenial = function () { 
+        //     console.log(self);  
+        //     console.log(self.year >= 1981 && self.year <= 1996);
+        // }
+        // // ekhane this keyword undefined hobe cg regular function call e this keyword undefined
+        // isMillenial();
+
+        // solution 2 
+        const isMillenial = () =>
+            console.log(this.year >= 1981 && this.year <= 1996);
+
+        isMillenial();
+    },
+    // never ever use this keyword in arrow function , we know arrow function cannot acces its own this rather it use window object so also dont use var
+    greed: function () {
+        console.log(this);
+        console.log(`Hey ${this.firstName}`);
+    }
+
+}
+
+// mohammad.greed();
+mohammad.calcAge();
+
+// arguments keyword
+
+const addexp = function (a, b) {
+
+    return a + b;
+}
+addexp(2, 3);
+//  if we need to pass more argument then use argument keyword no need to declare
+
+addexp(2, 3, 5, 6, 6, 6, 6, 9);
+// arrow function e this er moto argument undefined
+var arrow = (a, b) => {
+    console.log(arguments);
+}
+arrow(2, 3, 6)
