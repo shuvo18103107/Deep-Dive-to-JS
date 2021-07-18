@@ -15,6 +15,11 @@ const restaurant = {
     order: function (startterIndex, mainIndex) {
         return [this.starterMenu[startterIndex], this.mainMenu[mainIndex]]
     },
+    // we recieve a object then we destruct the object
+    orderDelivery: function ({ starterIndex = 2, mainIndex = 3, time = '22:8', address = 'shymoly' }) {
+        console.log(`Order recieved ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${time} at ${address}`);
+
+    },
 
     openingHours: {
         thu: {
@@ -31,7 +36,29 @@ const restaurant = {
         },
     },
 };
+// ekta function e object pass korci
+restaurant.orderDelivery(
+    {
+        time: '22:30',
+        address: 'Mirpur 2',
+        mainIndex: 2,
+        starterIndex: 3,
 
+
+    })
+restaurant.orderDelivery(
+    {
+
+        address: 'Shymoli',
+        mainIndex: 2,
+
+
+
+    }
+
+
+
+)
 const arr = [2, 3, 4];
 // destructing the array
 const [x, y, z] = arr;
@@ -42,11 +69,11 @@ const [firste, , , thirde] = restaurant.categories;
 console.log(firste, thirde);
 let [main, , secondary] = restaurant.categories
 console.log(main, secondary);
-//switch the dishes
-// const temp = main;
-// main = secondary;
-// secondary = temp;
-// console.log(main, secondary);
+// switch the dishes
+const temp = main;
+main = secondary;
+secondary = temp;
+console.log(main, secondary);
 [main, secondary] = [secondary, main]
 console.log(main, secondary);
 
@@ -64,3 +91,22 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8];
 
 console.log(p, q, r);
+//  object destruction
+const { name, categories, openingHours } = restaurant;
+console.log(name, categories, openingHours);
+const { name: restaurantName, openingHours: openHour, categories: cate } = restaurant;
+console.log(restaurantName, openHour, cate);
+// default values
+const { name: restuName = [], starterMenu: starter = [], menu = [2] } = restaurant;
+console.log(restuName, starter, menu);
+// mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 4, c: 27 };
+// overide korte hoile variable parenthesis e rakhte hoibo
+({ a, b } = obj);
+console.log(a, b);
+
+// nested object acess
+const { sat: { open: o, close: c }, thu, fri } = openingHours;
+console.log(o, c, thu, fri);
