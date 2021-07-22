@@ -78,8 +78,8 @@ console.log(main, secondary);
 console.log(main, secondary);
 
 // method theke calculative result ta destruct korbo 
-const [starter, maindish] = restaurant.order(2, 0)
-console.log(starter, maindish);
+const [starteri, maindish] = restaurant.order(2, 0)
+console.log(starteri, maindish);
 const nested = [2, 4, [5, 6]];
 
 // const [i, , j] = nested;
@@ -110,3 +110,5 @@ console.log(a, b);
 // nested object acess
 const { sat: { open: o, close: c }, thu, fri } = openingHours;
 console.log(o, c, thu, fri);
+
+console.log();
