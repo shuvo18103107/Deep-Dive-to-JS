@@ -67,3 +67,16 @@ if (restaurant.orderPizza) {
 }
 //using and in that case if exist then check
 restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach')
+
+// the nullish coalescing operator
+console.log('----nullish operator---');
+// here we set 0 but it returns 10 
+restaurant.numGuests = 0;
+
+
+// applying short circuit in or operator in this case
+//nullish - undefined and null (not 0 or '')
+const guest3 = restaurant.numGuests || 10;
+console.log(guest3);
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
