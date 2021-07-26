@@ -60,6 +60,9 @@ console.log(rest.get(arr));
 rest.set(document.querySelector('h1'), 'Heading')
 console.log(rest);
 
+
+
+
 // console.log(rest.get(obj))
 
 // map is useful , we can set array and object as an key but when we get it in traditional way , its show undefined cg they are then separate object , so we have to use it asa reference style 
