@@ -59,3 +59,6 @@ book.apply(swiss, flightData)
 console.log(swiss);
 book.call(swiss, ...flightData)
 // call method is better than using apply method , modern js we use call method
+
+// summary 
+// ekta object er method bire theke objectname.methodname diye access kora jai na, method e this use kori ba object name dei 2 khetrei bire theke access kora jai na tai undefined dekhai tai method ke ekta variable rekhe setake ekta function baniye function method use korte hobe like call and applu or bind

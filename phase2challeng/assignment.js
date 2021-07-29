@@ -157,13 +157,13 @@ console.log(shuvo.age)
 console.log(shuvo.getSummary())
 
 console.log(shuvo)
-retreive property from object
+//retreive property from object
 
 console.log(shuvo.firstName)
 
 const reciever = prompt('what do you want to know about jonas?')
 console.log(reciever);
-dot notation diye access korte gele undefined asbe cg property na eta, but bracket use kore object acess korle expression o kaj kore
+//dot notation diye access korte gele undefined asbe cg property na eta, but bracket use kore object acess korle expression o kaj kore
 console.log(shuvo[reciever])
 if (shuvo[reciever]) {
     console.log(`your ans is : ${shuvo[reciever]}`)
