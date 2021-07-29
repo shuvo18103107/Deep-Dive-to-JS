@@ -80,3 +80,5 @@ const taxval = taxCal(.25);
 taxval(200);
 taxval(400);
 taxval(529);
+
+// bind er khetre method ke age bind kori erpr function value baniye jokhn ichaa call dite parbo , kintu call e , call use korlei immediaely action nei
