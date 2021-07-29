@@ -25,8 +25,6 @@ const eurowings = {
     airline: 'Eurowings',
     iataCode: 'EW',
     bookings: [],
-
-    // we need book method from lufthansa object
 }
 console.log(eurowings);
 
