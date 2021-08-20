@@ -81,3 +81,32 @@ console.log(shuvo.__proto__ === Person.prototype);
 //objec er own property checking method
 console.log(shuvo.hasOwnProperty('firstName'));//true
 console.log(shuvo.hasOwnProperty('religion'));//false
+
+
+//prototype inheritence in built in object
+
+console.log(shuvo.__proto__.__proto__.__proto__);//person,prototype ekta simple object erpr abar prototype so object.prototype.prototype = null
+
+console.dir(Person.prototype.constructor);//get the constructor function
+//array prototype chain
+const arr = [1, 1, 2, 2, 3, 5, 5, 6, 7, 8, 2, 3, 4, 5, 6, 7]; //new Array or [] initialize Array constructor function
+console.log(arr.__proto__);//get the prototype of array
+console.log(arr.__proto__ === Array.prototype);//true
+console.log(arr.__proto__.__proto__);//Object.prototype
+console.log(arr.__proto__.__proto__.__proto__);//null
+
+//adding property or method Array constructor func  prototype 
+Array.prototype.unique = function () {
+
+    return [...new Set(this)]
+}
+console.log(arr.unique());
+//its sometimes create bug cg maybe in future js release unique method that time our own create unique method on array prototype can lead some bug
+
+//dom example
+// each dom is also a object so it has prototype
+const h1 = document.querySelector('h1')
+console.dir(h1)
+console.dir(h1.__proto__)
+//any function is also a object so it has own prototype
+console.dir(x => x + 1);
