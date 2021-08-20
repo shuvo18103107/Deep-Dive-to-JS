@@ -126,7 +126,7 @@ const capitalizeName = function (pesName) {
     const lowername = pesName.toLowerCase().split(' ');
     for (const i of lowername) {
         let firstIndex = i[0].toUpperCase();
-        finalName.push(i[0].toUpperCase() + i.slice(1))
+        finalName.push(firstIndex + i.slice(1))
         // finalName.push(i.replace(i[0], firstIndex))
 
     }
