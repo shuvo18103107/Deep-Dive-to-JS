@@ -42,9 +42,16 @@ class PersonCl {
     get fullName() {
         return this._fullName;
     }
+
+    //Add a static method on class
+    static hey() {
+        console.log('hey There 👋');
+
+
+    }
 }
 const jessica = new PersonCl('Jessica Davis', 1996);
-const kamrul = new PersonCl('Kamrul', 1995);
+// const kamrul = new PersonCl('Kamrul', 1995);
 console.log(jessica);
 jessica.calcAge();
 console.log(jessica.age);
@@ -81,4 +88,15 @@ console.log(account.movements);
 console.log(jessica.age);
 //*setter and getter is very useful in data validation
 
-console.log((kamrul.finalName = 'kamrul'));
+// console.log((kamrul.finalName = 'kamrul'));
+
+//*Array.from not attach on prototype so we can not use it like this [1,2,3].from , rather it add in Array constructor so we have to use Array.from, s when  a method add on array constructor func then we call it static method
+
+//Add a static method 
+PersonCl.hey = function () {
+
+    console.log('hey There 👋');
+
+}
+
+PersonCl.hey();
