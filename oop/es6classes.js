@@ -29,7 +29,7 @@ class PersonCl {
         return this._fullName;
     }
 
-    //* important cg whenever we set a property that alreay exist then use _
+    //* important cg whenever we name set method as like  a property then use _
     //*whenever we need validation and create new object property then setter is useful
     set fullName(
         name //same as property name so we get the value from object property name ->fullName
