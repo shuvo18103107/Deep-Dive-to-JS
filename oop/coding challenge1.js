@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Car = function (make, speed) {
     this.make = make;
