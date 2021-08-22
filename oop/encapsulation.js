@@ -36,6 +36,7 @@ class Account {
     }
     deposite(val) {
         this.#movements.push(val)
+        return this; // so that we can specify object for chaining work
     }
     _approveLoan(val) {
         return true;
@@ -43,6 +44,7 @@ class Account {
     }
     withdraw(val) {
         this.deposite(-val)
+        return this;
     }
 
     requesLoan(val) {
@@ -50,6 +52,7 @@ class Account {
             this.deposite(val)
         }
         console.log(`Loan approve ${this.owner}`);
+        return this;
     }
     static helper() {
         console.log('helper function for class not object');
@@ -83,3 +86,7 @@ console.log(acc1);
 // console.log(acc1.#approveLoan(500)); //see asa privat field not method yet
 Account.helper();
 //static method not work for object like acc1.helper() will not work here
+
+//chaining methods
+acc1.deposite(300).deposite(500).withdraw(-100).requesLoan(5000).withdraw(500);
+console.log(acc1.getMovements());
