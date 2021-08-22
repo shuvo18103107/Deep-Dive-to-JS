@@ -45,6 +45,12 @@ console.log(shuvo.__proto__.__proto__ === Person.prototype);//true
 console.dir(Student.prototype.constructor)//redirect from person constructor to student constructor
 
 //access parent method
+
+
+
+
+
+
 shuvo.calcAge();
 //access own object method
 shuvo.introduce();
