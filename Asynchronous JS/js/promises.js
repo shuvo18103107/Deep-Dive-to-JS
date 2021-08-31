@@ -23,8 +23,12 @@ const renderCountry = function (data, className = '') {
     </div>
    </article>`;
     countriesContainer.insertAdjacentHTML('beforeend', html);
-    countriesContainer.style.opacity = 1;
+    // countriesContainer.style.opacity = 1;
 };
+const renderError = function (msg) {
+    countriesContainer.insertAdjacentText('beforeend', msg)
+    // countriesContainer.style.opacity = 1;
+}
 // const getcountryData = function (country) {
 //     //fetch api return a promise if the promise is setteled i mean success then we call then call back method
 //     fetch(`https://restcountries.eu/rest/v2/name/${country}`).then(function (response) {
@@ -43,6 +47,8 @@ const renderCountry = function (data, className = '') {
 // };
 //modified the promise
 //note : without return prmosise we cannot call then, inside a then if we want to call another then method we have to return promise
+
+
 const getcountryData = function (country) {
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
         .then(response => response.json())
@@ -55,7 +61,24 @@ const getcountryData = function (country) {
             return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
         })
         .then(response => response.json())
-        .then(data => renderCountry(data, 'neighbour'));
+        .then(data => renderCountry(data, 'neighbour'))
+        .catch(err => {
+            // this call back function returns a error object so we can print only message from this err object not whole object
+            console.error(`${err}🚨🚨🚨`);
+            renderError(`something went wrong🚨 ${err.message}, Try again!`)
+        })
+        .finally(() => {
+            //loading spiiner in web a great use case of finally
+            //no matter the promise is fullfilled or rejected finally always trigger 
+            countriesContainer.style.opacity = 1;
+
+        })
+
+
 };
 
-getcountryData('palestine');
+btn.addEventListener('click', function () {
+
+    getcountryData('sds');
+
+})
