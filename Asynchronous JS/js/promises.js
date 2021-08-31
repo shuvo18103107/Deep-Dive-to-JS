@@ -42,10 +42,20 @@ const renderCountry = function (data, className = '') {
 //     });
 // };
 //modified the promise
+//note : without return prmosise we cannot call then, inside a then if we want to call another then method we have to return promise
 const getcountryData = function (country) {
     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
         .then(response => response.json())
-        .then(data => renderCountry(data[0]));
+        .then(data => {
+            // console.log(data);
+            renderCountry(data[0]);
+            const neighbour = data[0].borders[0];
+            // console.log(neighbour);
+            if (!neighbour) return;
+            return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+        })
+        .then(response => response.json())
+        .then(data => renderCountry(data, 'neighbour'));
 };
 
-getcountryData('Bangladesh');
+getcountryData('palestine');
