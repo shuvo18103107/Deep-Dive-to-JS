@@ -1,5 +1,5 @@
 'use strict';
-const countriesContainer = document.querySelector('.countries');
+/*const countriesContainer = document.querySelector('.countries');
 
 const renderCountry = function (data, className = '') {
     const html = `<article class="country ${className}">
@@ -49,4 +49,28 @@ const whereAmI = function (lat, lng) {
 
 // whereAmI(52.508, 13.381)
 whereAmI(19.037, 72.873)
+
+*/
 // whereAmI(-33.933, 18.474)
+
+//event loop in practice
+console.log('Time start'); //js engine code execution
+setTimeout(() => {
+    console.log('0 second timer!'); //wait in callstack
+
+}, 0);
+//settimeout will never call first before microtask queue async task so it will take time to call
+Promise.resolve('Resolved promise 1')
+    .then(res => console.log(res))//wait in micro stack which has priority over callstack queue
+Promise.resolve('Resolved promise 2')
+    .then(res => {
+        for (let i = 0; i <= 100; i++) {
+            //it take some time
+        }
+        console.log(res)
+    }
+    )
+
+console.log('Test End');//code execution by js engine
+
+//so when work with timer and microtask like async callback , timer will not work before any async task in the app
