@@ -50,9 +50,28 @@ const whereAmI = async function () {
         const mycountryData = await mycountryFind.json();
 
         renderCountry(mycountryData[0]);
+        return `I am in ${countrydata.city},${countrydata.country}  `; //return something from async function return a promise
     } catch (err) {
         renderError(`Somethingwent wrong ${err.message}`);
+
+        //returning promise error
+        throw err;
     }
 };
-whereAmI();
-console.log('FIrst');
+// whereAmI().then(res => console.log(res)).catch(err => console.error(err.message))
+// console.log('FIrst').finally(() => console.log('I am happy man always work in all situation'))
+//convert returning promise to async await way
+
+//await cannot work without async so we can use ife
+//ife -immediately invoked function expression
+(async function () {
+    try {
+        const returnVal = await whereAmI();
+        console.log(returnVal);
+    } catch (err) {
+        //async theke kicu return korle r error asle ta fullfilled always call kore tai async function er catch e err through kore eikhane catch block e dorte hoi
+        console.log(err.message);
+    } finally {
+        console.log('Come on dude i am always cool work in all time');
+    }
+})();
