@@ -118,3 +118,52 @@ const get3countries = async function (c1, c2) {
 };
 
 get3countries('Bangladesh', 'usa', 'japan');
+
+console.log(`-----------other promise combinator------`);
+
+(async function () {
+    const res = await Promise.race([
+        //now this 3 promise will rach together and the first reach winner return a fullfilled promise
+        //if one promise is rejected then others will also rejected
+        getJson(`https://restcountries.eu/rest/v2/name/italy`),
+        getJson(`https://restcountries.eu/rest/v2/name/bangladesh`),
+        getJson(`https://restcountries.eu/rest/v2/name/egypt`),
+    ]);
+
+    console.log(res[0]);
+})();
+
+const timeout = function (sec) {
+    return new Promise(function (_, reject) {
+        setTimeout(() => {
+            reject(new Error('request too long'));
+        }, sec * 1000);
+    });
+};
+
+Promise.race([
+    getJson(`https://restcountries.eu/rest/v2/name/iran`),
+    timeout(1),
+    //this two will reach if the timeout function won then it will reject the fetch function also
+])
+    .then((res) => console.log(res[0]))
+    .catch((err) => console.log(err.message));
+
+//promise.allSettled- it return all the result of all promises no matter is fullfilled or rejected , similar like promise.all but diff is promise.all could not return if any promise is rejected
+
+Promise.allSettled([
+    Promise.resolve('Success'),
+    Promise.reject('error'),
+    Promise.resolve('Success'),
+])
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
+
+//promise.any -es2021 -this will return first fullfilled promised and here rejected promises are ignore
+Promise.any([
+    Promise.resolve('Success'),
+    Promise.reject('error'),
+    Promise.resolve('another Success'),
+])
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
