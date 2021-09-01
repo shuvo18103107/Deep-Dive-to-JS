@@ -75,3 +75,46 @@ const whereAmI = async function () {
         console.log('Come on dude i am always cool work in all time');
     }
 })();
+
+//Running promises in parrallel
+//we want to get data about 3 countries and log the capital city of three country as an array
+const getJson = function (url, errorMsg = 'Something Went Wrong') {
+    return fetch(url).then((response) => {
+        //custom error handling
+        if (!response.ok) {
+            //response.ok = false
+            //throw reject the promise immediately and go to catch method to print the custom error message
+
+            throw new Error(`${errorMsg} ${response.status}`);
+        }
+        return response.json();
+    });
+};
+const get3countries = async function (c1, c2) {
+    try {
+        // const [countrydata1] = await getJson(
+        //     `https://restcountries.eu/rest/v2/name/${c1}`
+        // );
+        // const [countrydata2] = await getJson(
+        //     `https://restcountries.eu/rest/v2/name/${c2}`
+        // );
+        // const [countrydata3] = await getJson(
+        //     `https://restcountries.eu/rest/v2/name/${c3}`
+        // );
+        //get all the response parallely here we get response one after another , we dont want that
+        //we use promise.all function which takes all the promise in an array and call it at a same time
+        const data = await Promise.all([
+            getJson(`https://restcountries.eu/rest/v2/name/${c1}`),
+            getJson(`https://restcountries.eu/rest/v2/name/${c2}`),
+            getJson(`https://restcountries.eu/rest/v2/name/${c3}`),
+        ]);
+        // console.log([data1[0].capital, data2[0].capital, data3[0].capital]);
+        console.log(data.map((country) => country[0].capital));
+        //here the prb is if one promise is reject then others promise also rejected
+        //when we have multiple async operation and operation don't depend on one another then use promise.all to run them parrallely
+    } catch (err) {
+        console.log(err.message);
+    }
+};
+
+get3countries('Bangladesh', 'usa', 'japan');
