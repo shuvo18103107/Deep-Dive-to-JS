@@ -32,4 +32,27 @@ then run in command line -> npm run build
  if(module.hot){
      module.hot.accept()
  }
+
+ opening a live server ->  live-server.cmd
+*/
+
+/*
+Bubbling  - convert our code to es5 so that all user can use our application
+parcel automatic use bubble to transpile our code (babel)
+but bubble not transfyling es6 feature like promise find it just change the syntax like let to vat or a arraow function to normal function
+but we can change all es6 feature+ updated feature to es5 feature using polyfilling
+configure polyfilling so that new feature in updated js version also convert to es5
+
+so in the script file
+import ' core-js/stable' -parcel will automatically download it
+if not then use npm i core-js
+we can polyfilling customly any feature so that older browser can convert this feature to es5
+example: it reduce bundle size
+import 'core-js/stable/array/find'
+import 'core-js/stable/promise'
+
+there is still one feature like sync  that not polyfilling by core-js import so we have to install another thing
+npm i regenerator-runtime
+polyfilling async
+import 'regenerator-runtime/runtime'
 */
