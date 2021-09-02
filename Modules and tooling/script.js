@@ -60,8 +60,9 @@ console.log(totalPrice, qt, shippingCart);
 // //import
 // import { addTocart } = require('./shoppingCart');
 
-import { clone } from 'lodash';
-import { cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
+
+
+import { cloneDeep } from 'lodash';
 
 const state = {
     cart: [
