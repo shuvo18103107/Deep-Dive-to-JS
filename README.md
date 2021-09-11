@@ -1,1 +1,1 @@
-# Coding-Challenge-JS
+# Practice Module for Advanced Javascript
